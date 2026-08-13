@@ -27,7 +27,7 @@ Points on the map below were identified as locations where a monitoring station 
 
 **Note**: this map does *not* include existing monitoring stations. For stations with data as of the survey in 2023, see [this map](https://arcg.is/0u4HL0).  
 
-Click on a point to see the suggested water quality other parameters suggested to be monitored at this station.  
+Click on a point to see the suggested water quality and other parameters suggested to be monitored at this station.  
 
 ```{r}
 # set up the popup tables
