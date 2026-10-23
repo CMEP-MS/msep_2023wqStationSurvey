@@ -7,6 +7,17 @@ format: html
 library(sf)
 library(mapview)
 library(leafpop)
+library(mseptools)
+
+# carto_key <- Sys.getenv("CARTO_API_KEY")
+# carto_url <- sprintf("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=%s", carto_key)
+# Define a custom tile provider structure
+# mapviewOptions(
+#   default = FALSE,
+#   basemaps = c("Esri.OceanBasemap",
+#                "USGS.USTopo",
+#                "Esri.WorldGrayCanvas")
+# )
 
 dat <- read.csv(here::here("data",
                            "survey_responses_compiled.csv")) |> 
@@ -62,11 +73,13 @@ popups <- paste0(
 
 ```{r}
 # make the map
-mapview(dat, 
-        zcol = "Priority",
-        col.regions = rev(RColorBrewer::brewer.pal(4, "YlGn")),
-        layer.name = "Priority",
-        popup = popups)
+mapview_hydro(dat, 
+              map.types = c("Esri.WorldGrayCanvas", "Esri.WorldTopoMap",
+                            "Esri.OceanBasemap", "OpenStreetMap"),
+              zcol = "Priority",
+              col.regions = rev(RColorBrewer::brewer.pal(4, "YlGn")),
+              layer.name = "Priority",
+              popup = popups)
 
 ```
 
